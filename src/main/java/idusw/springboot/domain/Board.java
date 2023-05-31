@@ -13,13 +13,19 @@ import java.time.LocalDateTime;
 @ToString
 @EqualsAndHashCode
 
-public class Member {
-    private Long seq;
-    private String email;
-    private String name;
-    private String pw;
 
+public class Board {
+    //board
+    private Long bno; // 유일성있음
+    private String title;
+    private String content;
+
+    //join
+    private Long writerSeq;
+    private String writerEmail;
+    private String writerName;
+
+    //
     private LocalDateTime regDate;
     private LocalDateTime modDate;
-
 }

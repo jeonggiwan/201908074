@@ -1,6 +1,8 @@
 package idusw.springboot.controller;
 
 import idusw.springboot.domain.Member;
+import idusw.springboot.domain.PageRequestDTO;
+import idusw.springboot.domain.PageResultDTO;
 import idusw.springboot.entity.MemberEntity;
 import idusw.springboot.repository.MemberRepository;
 import idusw.springboot.service.MemberService;
@@ -47,10 +49,10 @@ public class MemberControllerTests {
     @Test
     void initializeMember() {
         // Integer 데이터 흐름, Lambda 식 - 함수형 언어의 특징을 활용
-        IntStream.rangeClosed(1, 33).forEach(i -> {
+        IntStream.rangeClosed(1, 101).forEach(i -> {
             MemberEntity member = MemberEntity.builder()
                     .seq(Long.valueOf(i))
-                    .email("email" + i + "@induk.ac.kr")
+                    .email("ab" + i + "@induk.ac.kr") // 200412045 -> 04045
                     .pw("pw" + i)
                     .name("name" + i)
                     .build();
@@ -70,5 +72,32 @@ public class MemberControllerTests {
         else
             System.out.println("등록 실패");
     }
+
+    @Test
+    public void testPagelist() {
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(2).perPage(10).build();
+        PageResultDTO<Member, MemberEntity> resultDTO = memberService.getList(pageRequestDTO);
+        // print records in page
+        /*for(Member member : resultDTO.getDtoList())
+            System.out.println(member);*/
+
+
+        /*
+         * boolean prev은 lombok으로 generation 할 때 getter는 isPrev(), setter는 setPrev() 를 생성함
+         * int totalPage 인 경우 getter는 getTotalPage(), setter setTotalPage
+         *
+         *
+         * // @Data == @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode.
+         * */
+        System.out.println("Prev : " + resultDTO.isPrev()); //perPagination =4인경, 1- 4, 5- 8 , 9-12
+        System.out.println("Next : " + resultDTO.isNext());
+        System.out.println("Total Page : " + resultDTO.getTotalPage());
+        resultDTO.getPageList().forEach(i -> System.out.println(i));
+        //위랑 같은 코드 위(람다)
+        //for(Integer i : resultDTO.getPageList())
+        //System.out.println(i);
+
+    }
+
 
 }

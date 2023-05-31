@@ -1,0 +1,26 @@
+0531 일자 내용
+작업순서
+    초기 작업
+        build tools - bulid.gradle or pom.xml설정
+         libraries or modules 프로젝트에서 사용할 수 있도록 함
+        application.properties를 설정
+         application.yaml : 애플리케이션 환경 설정
+        Config or @Configuration
+
+    서비스 별 작업
+         Model or Domain, DTO : Board or BoardDTO
+         entity : BoardEntity
+
+         Controller : BoardController
+         Service : BoardService, BoardServiceImpl
+         Repository :BoardRepository [BoradRepositoryImpl]
+
+    기본 4가지 + 부가적인 3가지
+     Crate        Search
+     Read         Sort
+     Update       Pagenation
+     Delete
+
+
+
+
