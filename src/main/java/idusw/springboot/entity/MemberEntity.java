@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity // 엔티티 클래스임으로 나타내는 애노테이션
-@Table(name = "jsj_member")
+@Table(name = "B201812057_m")
 
 @ToString   // lombok 라이브러리 사용
 @Getter

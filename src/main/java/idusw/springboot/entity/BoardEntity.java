@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "jsj_board")
+@Table(name = "B201812057_b")
 
 @ToString(exclude = "writer")   // lombok 라이브러리 사용
 @Getter
@@ -26,14 +26,7 @@ public class BoardEntity extends BaseEntity {
     @Column(length = 1000, nullable = false)
     private String content;
 
-    @Column(length = 20, nullable = false)
-    private String email;
 
-    @Column(length = 30, nullable = false)
-    private String name;
-
-    @Column(length = 20, nullable = false)
-    private String pw;
 
 
     @ManyToOne
